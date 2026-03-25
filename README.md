@@ -1,2 +1,2 @@
 # Achala_Enterprises
-Achala Enterprises
+A modern enterprise dedicated to Education, Design, and Holistic Wellness based in Bengaluru
