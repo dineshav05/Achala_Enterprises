@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="image/Achala_Enterprises_fav.png">
+    <title>Achala Enterprises | Education, Design & Wellness</title>
+    <meta name="description" content="A modern enterprise dedicated to Education, Design, and Holistic Wellness based in Bengaluru.">
+    
+    <!-- Tailwind CSS for rapid UI styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            600: '#d97757', /* A warm, earthy terracotta/amber */
+                            900: '#2d3748',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full py-6 px-8 bg-[#FAFAF7]/90 backdrop-blur-md shadow-sm flex justify-between items-center">
+    <div class="text-2xl font-bold tracking-tight text-brand-900">
+        <img src="image/Achala_Enterprises_logo.png" alt="Achala Enterprises" width="190px" height="auto" loading="lazy" />
+    </div>
+    <div>
+        <a href="#contact" class="text-sm font-semibold text-gray-600 hover:text-brand-600 transition">Contact Us</a>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <header class="flex-grow flex flex-col items-center justify-center text-center px-4 py-20">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight">
+            A modern enterprise dedicated to <span class="text-brand-600 text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-yellow-600">Education, Design, and Holistic Wellness.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-10">
+            Bridging ancient wisdom with modern technology to create products that nurture the mind, elevate brands, and sustain the body.
+        </p>
+    </header>
+
+    <!-- Portfolio/Business Units Grid -->
+<section class="max-w-7xl mx-auto px-4 pb-24 w-full">
+    <!-- Updated Grid Class: Changed md:grid-cols-3 to md:grid-cols-2 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Unit 1: Education -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
+           <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+               Smart board Digital Hub
+            </div>
+            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Achala Value Education Series</h3>
+            <p class="text-gray-600 mb-6 flex-grow">A modern, bilingual life-skills curriculum and smart-board digital hub rooted in Indian heritage, designed for today's students.</p>
+            <a href="https://dineshav05.github.io/achala-value-education/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
+                Explore the Digital Hub <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Unit 2: Design Agency -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
+            <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+               Design Consultancy
+            </div>
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-pen-nib"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Stylemanntra Digital</h3>
+            <p class="text-gray-600 mb-6 flex-grow">Our in-house UI/UX and digital product design studio, crafting seamless, user-centric experiences for global clients.</p>
+            <a href="https://www.stylemanntra.co.in/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
+                View Design Portfolio <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Unit 3: Organics & Wellness -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
+            <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                Wellness & Nutrition
+            </div>
+            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Achala Living & Organics</h3>
+            <p class="text-gray-600 mb-6 flex-grow">Ayurvedic lifestyle consulting, sustainable products, and life-aging pause therapy designed for holistic well-being.</p>
+            <a href="https://dineshav05.github.io/achala-organics/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
+                Explore the Holistic Info <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Unit 4: Founder & UX Architect Profile -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
+            <div class="absolute top-6 right-6 bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                Founder & UX Architect
+            </div>
+            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-id-badge"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Dinesha Vishwanatha</h3>
+            <p class="text-gray-600 mb-6 flex-grow">Founder & Director of Achala Enterprises and Senior UX/UI Architect, bridging IT innovation with tech-backed holistic wellness.</p>
+            <!-- Update the href below to link to your digital business card or LinkedIn -->
+            <a href="https://www.dineshavishwanatha.com/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
+                View Professional Profile <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="w-full bg-white py-24 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Whether you are a school looking to upgrade your curriculum, a brand in need of UI/UX product design, or seeking holistic wellness consulting, we are ready to collaborate.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-brand-50 rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+                
+                <!-- Contact Information Panel -->
+                <div class="p-10 md:p-12 bg-brand-900 text-white flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-brand-50">Contact Information</h3>
+                        <p class="text-gray-300 mb-10 leading-relaxed">
+                            Fill out the form and our team will get back to you within 24 hours. We look forward to building something great together.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-location-dot text-brand-50"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-50">Registered Office</h4>
+                                    <p class="text-gray-300 text-sm mt-1">Nagarbhavi, Bengaluru<br>Karnataka - 560072, India</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-phone text-brand-50"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-50">Phone</h4>
+                                    <p class="text-gray-300 text-sm mt-1">+91 91132 75199</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-envelope text-brand-50"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-brand-50">Email</h4>
+                                    <p class="text-gray-300 text-sm mt-1">director@achalaenterprises.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dinesha's Signature/Sign-off -->
+                    <div class="mt-12 pt-8 border-t border-white/20">
+                        <p class="text-sm text-gray-400">Led by</p>
+                        <p class="text-lg font-semibold text-white">Dinesha Vishwanatha</p>
+                        <p class="text-sm text-brand-600">Founder, Author & Director</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form Panel -->
+                <div class="p-10 md:p-12">
+                    <!-- Note: Replace YOUR_FORMSPREE_ID with your actual formspree endpoint -->
+                    <form action="https://formspree.io/f/mdapkqld" method="POST" class="space-y-6">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white">
+                        </div>
+
+                        <div>
+                            <label for="inquiryType" class="block text-sm font-medium text-gray-700 mb-2">Subject of Inquiry</label>
+                            <select id="inquiryType" name="inquiryType" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white text-gray-700">
+                                <option value="" disabled selected>Select a division...</option>
+                                <option value="Achala Organics">Functional Wellness</option>
+                                <option value="Achala Value Education (Bulk Books/Hub)">Achala Value Education (Phygital Curriculum)</option>
+                                <option value="Stylemanntra Digital (UI/UX)">Stylemanntra Digital (UI/UX Consultancy)</option>
+                                <option value="SilkStone">SilkStone Ayurvedic & Nutrition Consultation</option>
+                                <option value="General Business Inquiry">General Business Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-600 text-white font-semibold py-4 px-6 rounded-lg hover:bg-yellow-600 transition-colors duration-300 shadow-md">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <div class="font-bold text-gray-900 mb-1">Achala<sup>TM</sup> Enterprises</div>
+                <div class="text-sm text-gray-500">Nagarbhavi, Bengaluru, Karnataka 560072, India</div>
+                <div class="text-sm text-gray-500 mt-1">Udyam MSME Reg No: <span class="font-mono bg-gray-100 px-1 rounded text-gray-700">UDYAM-KR-03-0681393</span></div>
+            </div>
+            <div class="text-sm text-gray-500">
+                &copy; 2026 Achala Enterprises. All rights reserved.<br>
+                Founder: Dinesha Vishwanatha
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
