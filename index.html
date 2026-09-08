@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Marquee Animation for Insights */
+       /* Ensure the marquee moves smoothly and respects mobile boundaries */
         @keyframes scrollMarquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -33,6 +33,12 @@
           animation-play-state: paused;
         }
         
+        /* Mobile alignment tweak to prevent vertical clipping */
+        @media (max-width: 768px) {
+          .animate-marquee {
+            animation-duration: 25s; /* Slightly faster on mobile for better flow */
+          }
+        }
     </style>
 
     <script>
@@ -83,60 +89,64 @@
 </div>
 </nav>
 
-    <!-- Marquee Insights Section -->
-<section class="w-full bg-gray-100 border-y border-gray-200 py-3 overflow-hidden">
-    <div class="max-w-7xl mx-auto flex items-center">
+<!-- Products & Services Marquee Ticker Section -->
+<section class="w-full bg-slate-50 border-y border-slate-200 py-2.5 sm:py-3 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-6 lg:px-8">
         
-        <!-- Sticky "Insights" Badge Header -->
-        <div class="z-10 flex items-center gap-2 bg-brand-600 text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md shrink-0">
+        <!-- Sticky "Products & Services" Badge Header -->
+        <div class="z-20 flex items-center gap-2 bg-[#d97757] text-white px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm shadow-md shrink-0">
             <span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
-            <span>Products & Services</span>
+            <span class="whitespace-nowrap">Products & Services</span>
         </div>
 
-        <!-- Scrolling Ticker Container -->
-        <div class="overflow-hidden relative w-full flex items-center ml-4 mask-fade">
-            <div class="animate-marquee flex items-center gap-6 whitespace-nowrap">
+        <!-- Scrolling Ticker Container with Left Gradient Mask -->
+        <div class="overflow-hidden relative w-full flex items-center ml-2 sm:ml-4">
+            <div class="animate-marquee flex items-center gap-4 sm:gap-6 whitespace-nowrap">
                 
-                <!-- Insight Item 1 -->
-                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
-                    <img src="image/cognition.png" alt="Agni" class="w-10 h-10 rounded-lg object-cover">
+                <!-- Item 1: EdTech Solution -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/cognition.png" alt="Cognitve" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700 font-bold text-xs">💻</div>
                     <div>
-                        <h4 class="text-xs font-bold text-gray-900">EdTech: AI Cognitive run 10 second passive room audit...</h4>
-                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
-                            <span>📅</span> June 16, 2026
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Insight Item 2 -->
-                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
-                    <img src="image/AIreader.png" alt="Monsoon" class="w-10 h-10 rounded-lg object-cover">
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-900">EdTech: Adaptive E Reader client side visual tracking...</h4>
-                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: AI Cognitive run 10 second passive room audit...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
                             <span>📅</span> July 26, 2026
                         </p>
                     </div>
                 </div>
 
-                <!-- Insight Item 3 -->
-                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
-                    <img src="image/orthopedic.png" alt="Night Routine" class="w-10 h-10 rounded-lg object-cover">
+                <!-- Item 2: Digital Vaidya / Healthcare -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/orthopedic.png" alt="Orthopedic" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700 font-bold text-xs">🩺</div>
                     <div>
-                        <h4 class="text-xs font-bold text-gray-900">Health Tech: Orthopedic Dual Brain Ayurveda and Allopathy...</h4>
-                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                        <h4 class="text-xs font-bold text-slate-900">HealthTech Digital Vaidya: Dual AI Clinical Dossier...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> August 15, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Wellness & Organics -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/AIreader.png" alt="AIReader" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 font-bold text-xs">🌿</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: Adaptive E Reader client side visual tracking...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
                             <span>📅</span> July 7, 2026
                         </p>
                     </div>
                 </div>
 
-                <!-- Duplicate items for seamless continuous looping -->
-                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
-                    <img src="image/kinetic-energy.png" alt="Agni" class="w-10 h-10 rounded-lg object-cover">
+                <!-- Seamless Loop Duplicate Items -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/kinetic-energy.png" alt="Kinetic" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700 font-bold text-xs">💻</div>
                     <div>
-                        <h4 class="text-xs font-bold text-gray-900">EdTech: Kinetic Energy burn off post restlessness...</h4>
-                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
-                            <span>📅</span> August 15, 2026
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: Kinetic Energy burn off post restlessness...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 26, 2026
                         </p>
                     </div>
                 </div>
@@ -144,15 +154,10 @@
             </div>
         </div>
 
-        <!-- Trailing Play / Action Control Button -->
-        <div class="z-10 ml-4 hidden md:flex items-center justify-center bg-gray-900 text-white w-10 h-10 rounded-lg shadow-md shrink-0 hover:bg-gray-800 transition cursor-pointer">
-            <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-        </div>
-
     </div>
 </section>
+    
+   
 
     <section class="w-full bg-orange-50/30 py-16 px-4 font-sans text-slate-900">
   
