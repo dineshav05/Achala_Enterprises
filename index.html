@@ -16,6 +16,25 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* Marquee Animation for Insights */
+        @keyframes scrollMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: scrollMarquee 35s linear infinite;
+        }
+        
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+        
+    </style>
+
     <script>
         tailwind.config = {
             theme: {
@@ -63,6 +82,77 @@
   
 </div>
 </nav>
+
+    <!-- Marquee Insights Section -->
+<section class="w-full bg-gray-100 border-y border-gray-200 py-3 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex items-center">
+        
+        <!-- Sticky "Insights" Badge Header -->
+        <div class="z-10 flex items-center gap-2 bg-brand-600 text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md shrink-0">
+            <span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
+            <span>Insights</span>
+        </div>
+
+        <!-- Scrolling Ticker Container -->
+        <div class="overflow-hidden relative w-full flex items-center ml-4 mask-fade">
+            <div class="animate-marquee flex items-center gap-6 whitespace-nowrap">
+                
+                <!-- Insight Item 1 -->
+                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
+                    <img src="path_to_image_1.jpg" alt="Agni" class="w-10 h-10 rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900">Agni Explained: The Real Ayurvedic Root Cause of...</h4>
+                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> August 15, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Insight Item 2 -->
+                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
+                    <img src="path_to_image_2.jpg" alt="Monsoon" class="w-10 h-10 rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900">Varsha Ritucharya: The Ayurvedic Monsoon Routine...</h4>
+                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 26, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Insight Item 3 -->
+                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
+                    <img src="path_to_image_3.jpg" alt="Night Routine" class="w-10 h-10 rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900">The Ayurvedic Night Routine for Deep Rest & Sleep...</h4>
+                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 7, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Duplicate items for seamless continuous looping -->
+                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-xs hover:border-brand-500 transition cursor-pointer">
+                    <img src="path_to_image_1.jpg" alt="Agni" class="w-10 h-10 rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-900">Agni Explained: The Real Ayurvedic Root Cause of...</h4>
+                        <p class="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> August 15, 2026
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Trailing Play / Action Control Button -->
+        <div class="z-10 ml-4 hidden md:flex items-center justify-center bg-gray-900 text-white w-10 h-10 rounded-lg shadow-md shrink-0 hover:bg-gray-800 transition cursor-pointer">
+            <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+        </div>
+
+    </div>
+</section>
 
     <section class="w-full bg-orange-50/30 py-16 px-4 font-sans text-slate-900">
   
