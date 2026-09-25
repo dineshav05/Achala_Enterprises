@@ -59,6 +59,65 @@
                 }
             }
         }
+
+let slideIndex = 0;
+let slideInterval;
+
+function showSlides() {
+    const slides = document.querySelectorAll('.slideshow-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (!slides.length) return;
+
+    slides.forEach(slide => slide.style.opacity = '0');
+    dots.forEach(dot => dot.classList.remove('bg-amber-600', 'w-6'));
+    dots.forEach(dot => dot.classList.add('bg-gray-300'));
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    slides[slideIndex - 1].style.opacity = '1';
+    dots[slideIndex - 1].classList.remove('bg-gray-300');
+    dots[slideIndex - 1].classList.add('bg-amber-600', 'w-6');
+}
+
+function changeSlide(n) {
+    clearInterval(slideInterval);
+    const slides = document.querySelectorAll('.slideshow-slide');
+    slideIndex += n;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    if (slideIndex < 1) { slideIndex = slides.length; }
+
+    slides.forEach(slide => slide.style.opacity = '0');
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => {
+        dot.classList.remove('bg-amber-600', 'w-6');
+        dot.classList.add('bg-gray-300');
+    });
+
+    slides[slideIndex - 1].style.opacity = '1';
+    dots[slideIndex - 1].classList.remove('bg-gray-300');
+    dots[slideIndex - 1].classList.add('bg-amber-600', 'w-6');
+    
+    startAutoSlide();
+}
+
+function currentSlide(n) {
+    clearInterval(slideInterval);
+    slideIndex = n - 1;
+    showSlides();
+    startAutoSlide();
+}
+
+function startAutoSlide() {
+    slideInterval = setInterval(showSlides, 5000); // Changes slide every 5 seconds
+}
+
+// Initialize slideshow on page load
+document.addEventListener("DOMContentLoaded", () => {
+    showSlides();
+    startAutoSlide();
+});
     </script>
 </head>
 <body class="bg-brand-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
@@ -384,6 +443,65 @@
                     <i class="fa-solid fa-arrow-right text-sm group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
                 </a>
             </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 3-Image Slideshow Showcase Section -->
+<section class="py-16 bg-white px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto text-center">
+        
+        <!-- Section Header -->
+        <span class="inline-block bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
+            🌿 Holistic Wisdom Showcase
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">
+            Natural Healing & Heritage Remedies
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-8">
+            Exploring nature's most powerful remedies for joint health, vitality, and immunity.
+        </p>
+
+        <!-- Slideshow Container -->
+        <div class="relative w-full max-w-2xl mx-auto bg-slate-900 rounded-2xl shadow-xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center">
+            
+            <!-- Slide 1 -->
+            <div class="slideshow-slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="path_to_slide_1.jpg" alt="Powerful Herb for Healing" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">The Most Powerful Herb for Natural Healing</h3>
+                <p class="text-xs text-gray-600 mt-1">Destroys parasites, urinary infections, joint pain, and supports deep recovery.</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="path_to_slide_2.jpg" alt="Ayurvedic Preparation" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Traditional Preparation & Dosha Balance</h3>
+                <p class="text-xs text-gray-600 mt-1">Uniting ancient kitchen remedies with modern biochemical understanding.</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="path_to_slide_3.jpg" alt="Holistic Wellness" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Sustainable Living & Organics</h3>
+                <p class="text-xs text-gray-600 mt-1">Nourishing the mind and body through pure, unadulterated elements.</p>
+            </div>
+
+            <!-- Navigation Controls (Previous / Next Buttons) -->
+            <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 rounded-full transition z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 rounded-full transition z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <!-- Slide Dots Indicator -->
+            <div class="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-10">
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(1)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(2)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(3)"></span>
+            </div>
+
         </div>
 
     </div>
