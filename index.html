@@ -379,18 +379,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Banner Card Layout -->
         <div class="bg-white rounded-2xl shadow-xl border border-emerald-100 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
             
-            <!-- Left Side: Visual Banner Graphic (using your herbal source image reference) -->
-            <div class="lg:col-span-6 bg-slate-900 relative overflow-hidden flex items-center justify-center p-6 sm:p-10 min-h-[320px]">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10"></div>
-                <!-- Replace with your organic product or herb image asset path -->
-                <img src="image/IMC.png" alt="Powerful Herbal and Organic Remedies" class="absolute inset-0 w-full h-full object-cover opacity-90 transform hover:scale-105 transition duration-700">
-                
-                <!-- Floating Badge on Banner -->
-                <div class="relative z-20 self-end w-full text-white">
-                    <span class="bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+            <!-- Left Side: Banner Image (Fully visible and responsive on mobile & desktop) -->
+            <div class="lg:col-span-6 bg-slate-900 flex flex-col justify-between p-4 sm:p-6 lg:p-8 relative">
+                <div class="w-full rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                    <!-- Updated to scale fluidly without cropping or hiding content -->
+                    <img src="image/IMC.png" alt="Powerful Herbal and Organic Remedies" class="w-full h-auto max-h-[350px] sm:max-h-[400px] object-contain rounded-lg">
+                </div>
+                <div class="mt-4">
+                    <span class="bg-emerald-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
                         Featured Remedy
                     </span>
-                    <h3 class="text-xl sm:text-2xl font-bold mt-2 text-white drop-shadow">
+                    <h3 class="text-lg sm:text-xl font-bold mt-2 text-white">
                         Nature’s Most Powerful Healing Herbs
                     </h3>
                 </div>
