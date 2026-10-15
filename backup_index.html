@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="image/Achala_Enterprises_fav.png">
-    <title>Achala Enterprises | Education, Design & Wellness</title>
+    <link rel="icon" type="image/png" href="image/Achala_Fav_Logo.png">
+    <title>Achala Enterprises | Education, Health & Ayurveda Wellness</title>
     <meta name="description" content="A modern enterprise dedicated to Education, Design, and Holistic Wellness based in Bengaluru.">
     
     <!-- Tailwind CSS for rapid UI styling -->
@@ -15,6 +15,31 @@
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+       /* Ensure the marquee moves smoothly and respects mobile boundaries */
+        @keyframes scrollMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: scrollMarquee 35s linear infinite;
+        }
+        
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+        
+        /* Mobile alignment tweak to prevent vertical clipping */
+        @media (max-width: 768px) {
+          .animate-marquee {
+            animation-duration: 25s; /* Slightly faster on mobile for better flow */
+          }
+        }
+    </style>
 
     <script>
         tailwind.config = {
@@ -34,6 +59,65 @@
                 }
             }
         }
+
+let slideIndex = 0;
+let slideInterval;
+
+function showSlides() {
+    const slides = document.querySelectorAll('.slideshow-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (!slides.length) return;
+
+    slides.forEach(slide => slide.style.opacity = '0');
+    dots.forEach(dot => dot.classList.remove('bg-amber-600', 'w-6'));
+    dots.forEach(dot => dot.classList.add('bg-gray-300'));
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    slides[slideIndex - 1].style.opacity = '1';
+    dots[slideIndex - 1].classList.remove('bg-gray-300');
+    dots[slideIndex - 1].classList.add('bg-amber-600', 'w-6');
+}
+
+function changeSlide(n) {
+    clearInterval(slideInterval);
+    const slides = document.querySelectorAll('.slideshow-slide');
+    slideIndex += n;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    if (slideIndex < 1) { slideIndex = slides.length; }
+
+    slides.forEach(slide => slide.style.opacity = '0');
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => {
+        dot.classList.remove('bg-amber-600', 'w-6');
+        dot.classList.add('bg-gray-300');
+    });
+
+    slides[slideIndex - 1].style.opacity = '1';
+    dots[slideIndex - 1].classList.remove('bg-gray-300');
+    dots[slideIndex - 1].classList.add('bg-amber-600', 'w-6');
+    
+    startAutoSlide();
+}
+
+function currentSlide(n) {
+    clearInterval(slideInterval);
+    slideIndex = n - 1;
+    showSlides();
+    startAutoSlide();
+}
+
+function startAutoSlide() {
+    slideInterval = setInterval(showSlides, 5000); // Changes slide every 5 seconds
+}
+
+// Initialize slideshow on page load
+document.addEventListener("DOMContentLoaded", () => {
+    showSlides();
+    startAutoSlide();
+});
     </script>
 </head>
 <body class="bg-brand-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
@@ -41,90 +125,755 @@
     <!-- Navigation -->
 <nav class="sticky top-0 z-50 w-full py-6 px-8 bg-[#FAFAF7]/90 backdrop-blur-md shadow-sm flex justify-between items-center">
     <div class="text-2xl font-bold tracking-tight text-brand-900">
-        <img src="image/Achala_Enterprises_logo.png" alt="Achala Enterprises" width="190px" height="auto" loading="lazy" />
+        <img src="image/Achala_HLogo2.png" alt="Achala Enterprises" width="190px" height="auto" loading="lazy" />
     </div>
-    <div>
-        <a href="#contact" class="text-sm font-semibold text-gray-600 hover:text-brand-600 transition">Contact Us</a>
-    </div>
+    <div class="flex items-center space-x-3 md:space-x-8">
+  
+ <!-- <a 
+    href="https://achala-phygital-hub.vercel.app/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="px-3 py-1.5 md:px-5 md:py-2 border-[1.5px] md:border-2 border-[#0B3948] text-[#0B3948] hover:bg-[#0B3948] hover:text-[#F5F2EA] rounded-full font-semibold text-xs md:text-sm whitespace-nowrap transition-all duration-300"
+  >
+    Achala Ecosystem
+</a> -->
+
+  <a 
+    href="#contact" 
+    class="text-gray-800 hover:text-[#0B3948] font-medium text-xs md:text-sm whitespace-nowrap transition-colors"
+  >
+    Contact Us
+  </a>
+  
+</div>
 </nav>
 
-    <!-- Hero Section -->
-    <header class="flex-grow flex flex-col items-center justify-center text-center px-4 py-20">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight">
-            A modern enterprise dedicated to <span class="text-brand-600 text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-yellow-600">Education, Design, and Holistic Wellness.</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-10">
-            Bridging ancient wisdom with modern technology to create products that nurture the mind, elevate brands, and sustain the body.
-        </p>
-    </header>
-
-    <!-- Portfolio/Business Units Grid -->
-<section class="max-w-7xl mx-auto px-4 pb-24 w-full">
-    <!-- Updated Grid Class: Changed md:grid-cols-3 to md:grid-cols-2 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Products & Services Marquee Ticker Section -->
+<section class="w-full bg-slate-50 border-y border-slate-200 py-2.5 sm:py-3 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-6 lg:px-8">
         
-        <!-- Unit 1: Education -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
-           <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-               Smart board Digital Hub
-            </div>
-            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-book-open"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Achala Value Education Series</h3>
-            <p class="text-gray-600 mb-6 flex-grow">A modern, bilingual life-skills curriculum and smart-board digital hub rooted in Indian heritage, designed for today's students.</p>
-            <a href="https://dineshav05.github.io/achala-value-education/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
-                Explore the Digital Hub <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
+        <!-- Sticky "Products & Services" Badge Header -->
+        <div class="z-20 flex items-center gap-2 bg-[#d97757] text-white px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm shadow-md shrink-0">
+            <span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
+            <span class="whitespace-nowrap">Products & Services</span>
         </div>
 
-        <!-- Unit 2: Design Agency -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
-            <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-               Design Consultancy
-            </div>
-            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-pen-nib"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Stylemanntra Digital</h3>
-            <p class="text-gray-600 mb-6 flex-grow">Our in-house UI/UX and digital product design studio, crafting seamless, user-centric experiences for global clients.</p>
-            <a href="https://www.stylemanntra.co.in/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
-                View Design Portfolio <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
-        </div>
+        <!-- Scrolling Ticker Container with Left Gradient Mask -->
+        <div class="overflow-hidden relative w-full flex items-center ml-2 sm:ml-4">
+            <div class="animate-marquee flex items-center gap-4 sm:gap-6 whitespace-nowrap">
+                
+                <!-- Item 1: EdTech Solution -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/cognition.png" alt="Cognitve" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700 font-bold text-xs">💻</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: AI Cognitive run 10 second passive room audit...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 26, 2026
+                        </p>
+                    </div>
+                </div>
 
-        <!-- Unit 3: Organics & Wellness -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
-            <div class="absolute top-6 right-6 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                Wellness & Nutrition
-            </div>
-            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-leaf"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Achala Living & Organics</h3>
-            <p class="text-gray-600 mb-6 flex-grow">Ayurvedic lifestyle consulting, sustainable products, and life-aging pause therapy designed for holistic well-being.</p>
-            <a href="https://dineshav05.github.io/achala-organics/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
-                Explore the Holistic Info <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
-        </div>
+                <!-- Item 2: Digital Vaidya / Healthcare -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/orthopedic.png" alt="Orthopedic" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700 font-bold text-xs">🩺</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">HealthTech Digital Vaidya: Dual AI Clinical Dossier...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> August 15, 2026
+                        </p>
+                    </div>
+                </div>
 
-        <!-- Unit 4: Founder & UX Architect Profile -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full relative overflow-hidden">
-            <div class="absolute top-6 right-6 bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                Founder & UX Architect
+                <!-- Item 3: Wellness & Organics -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/AIreader.png" alt="AIReader" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700 font-bold text-xs">🌿</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: Adaptive E Reader client side visual tracking...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 7, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Seamless Loop Duplicate Items -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/kinetic-energy.png" alt="Kinetic" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700 font-bold text-xs">💻</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">EdTech: Kinetic Energy burn off post restlessness...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> July 26, 2026
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Seamless Loop Duplicate Items -->
+                <div class="flex items-center gap-2.5 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs hover:border-amber-500 transition cursor-pointer shrink-0">
+                    <img src="image/oil.png" alt="Ayurveda" class="w-10 h-10 rounded-lg object-cover">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700 font-bold text-xs">💻</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Ayurveda Products: Where Ancient Ayurveda meets Modern Science...</h4>
+                        <p class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                            <span>📅</span> Sep 24, 2026
+                        </p>
+                    </div>
+                </div>
+
             </div>
-            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-id-badge"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Dinesha Vishwanatha</h3>
-            <p class="text-gray-600 mb-6 flex-grow">Founder & Director of Achala Enterprises and Senior UX/UI Architect, bridging IT innovation with tech-backed holistic wellness.</p>
-            <!-- Update the href below to link to your digital business card or LinkedIn -->
-            <a href="https://www.dineshavishwanatha.com/" target="_blank" class="text-brand-600 font-semibold hover:underline flex items-center gap-2 mt-auto">
-                View Professional Profile <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
         </div>
 
     </div>
+</section>
+    
+
+<!-- Tri-Core Ecosystem Navigation & Section Split (Aesthetically Enhanced) -->
+<section id="tri-core-ecosystem" class="py-16 md:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-xs">
+                🚀 Achala Enterprises Ecosystem
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                Three Pillars. <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600">One Unified Mission.</span>
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
+                We sit at the powerful intersection of innovation and tradition—engineering neural learning systems, AI health dossiers, and wildcrafted Ayurvedic formulations to elevate human potential.
+            </p>
+        </div>
+
+        <!-- Tri-Core 3-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            
+            <!-- Pillar 1: Neural Ed-Tech Learning Systems (Amber/Slate Theme) -->
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200/90 p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group relative overflow-hidden">
+                <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-slate-900 to-amber-700"></div>
+                <div>
+                    <!-- Icon / Badge -->
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center font-bold text-2xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                        🎓
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-800 uppercase tracking-widest bg-amber-100/70 px-3 py-1 rounded-full">Pillar I</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-3 mb-3">Neural Ed-Tech & Phygital Hub</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                        Optimizing student cognitive output and protecting teacher bandwidth through real-time nervous system regulation and Zero-IT classroom transition tools.
+                    </p>
+                    <ul class="space-y-3 text-xs text-slate-700 font-semibold mb-8">
+                        <li class="flex items-center gap-2.5"><span class="text-amber-700">✔</span> Ensuring Students are more focused to maximize retention, Eliminates behavioral guesswork and inconsistent classroom with Cognitive State Tracking</li>
+                        <li class="flex items-center gap-2.5"><span class="text-amber-700">✔</span> Solves the Administrative blindspots regarding platform utilization and teacher compaliance</li>
+                        <li class="flex items-center gap-2.5"><span class="text-amber-700">✔</span> Eliminates Vague, subjective descriptions of students behavior during board or parents meetings</li>
+                        <li class="flex items-center gap-2.5"><span class="text-amber-700">✔</span> Empower Teachers to optimize lesson delivery in real-time through tailored data-driven micro-interventions</li>
+                        <li class="flex items-center gap-2.5"><span class="text-amber-700">✔</span> Addresses systemic scheduling inefficiencies, Solve issues of administration to run independent audits</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#education" class="w-full py-3.5 px-6 rounded-2xl bg-[#d97757] text-white font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-md group/btn">
+                        <span>Explore EdTech Suite</span>
+                        <span class="group-hover/btn:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pillar 2: AI Health-Tech Solutions (Sky Blue Theme) -->
+            <div class="bg-white rounded-3xl shadow-xl border border-sky-100 p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group relative overflow-hidden">
+                <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-sky-500 to-blue-600"></div>
+                <div>
+                    <!-- Icon / Badge -->
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold text-2xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                        🩺
+                    </div>
+                    <span class="text-xs font-extrabold text-sky-600 uppercase tracking-widest bg-sky-100/70 px-3 py-1 rounded-full">Pillar II</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-3 mb-3">Achala Digital Vaidya (ORTHO EDITION)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                        A dual-engine AI platform that translates complex medical reports, MRIs, and lab diagnostics into clear clinical breakdowns paired with kitchen Ayurveda.
+                    </p>
+                    <ul class="space-y-3 text-xs text-slate-700 font-semibold mb-8">
+                        <li class="flex items-center gap-2.5"><span class="text-sky-600">✔</span> Simultaneous Allopathic clinical evaluation & Ayurvedic holistic guidance</li>
+                        <li class="flex items-center gap-2.5"><span class="text-sky-600">✔</span> Supports regional languages with clear, easy-to-read typography</li>
+                        <li class="flex items-center gap-2.5"><span class="text-sky-600">✔</span> Specialized AI for MRI, X-ray summaries, and back/knee pain prescriptions</li>
+                        <li class="flex items-center gap-2.5"><span class="text-sky-600">✔</span> Instant PDF Dossier Generation, Print-ready, clean clinical education local language reports generated in seconds</li>
+                        <li class="flex items-center gap-2.5"><span class="text-sky-600">✔</span> Seamless, secure Razorpay checkout for pay-per-report access</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#digital-vaidya" class="w-full py-3.5 px-6 rounded-2xl bg-sky-600 text-white font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 hover:bg-sky-700 transition-all shadow-md group/btn">
+                        <span>Get Ortho Report Download</span>
+                        <span class="group-hover/btn:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Pure Ayurvedic Wellness Products (Emerald Green Theme) -->
+            <div class="bg-white rounded-3xl shadow-xl border border-emerald-100 p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group relative overflow-hidden">
+                <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
+                <div>
+                    <!-- Icon / Badge -->
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-2xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                        🌿
+                    </div>
+                    <span class="text-xs font-extrabold text-emerald-700 uppercase tracking-widest bg-emerald-100/70 px-3 py-1 rounded-full">Pillar III</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-3 mb-3">Achala Organics & IMC Ayurveda</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                        Wildcrafted, unadulterated botanical products and natural healing remedies designed to destroy parasites, soothe joint pain, and restore deep immunity.
+                    </p>
+                    <ul class="space-y-3 text-xs text-slate-700 font-semibold mb-8">
+                        <li class="flex items-center gap-2.5"><span class="text-emerald-600">✔</span> 100% Raw & Wildcrafted Ingredients, Bringing wellness-focused products and solutions closer to consumers</li>
+                        <li class="flex items-center gap-2.5"><span class="text-emerald-600">✔</span> Bringing the profound healing of Ayurvedic nutrition and cutting-edge lifestyle into your daily routine</li>
+                        <li class="flex items-center gap-2.5"><span class="text-emerald-600">✔</span> Health, Nutrition & Herbal Formulations</li>
+                        <li class="flex items-center gap-2.5"><span class="text-emerald-600">✔</span> Tech-Backed Wellness, Rooted in Ancient Ayurveda</li>
+                        <li class="flex items-center gap-2.5"><span class="text-emerald-600">✔</span> Offering a diverse portfolio designed around everyday wellness and lifestyle needs</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#organic-products" class="w-full py-3.5 px-6 rounded-2xl bg-emerald-600 text-white font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all shadow-md group/btn">
+                        <span>Explore Ayurveda Store</span>
+                        <span class="group-hover/btn:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+        <!-- 3-Image Slideshow Showcase Section -->
+<section class="py-16 bg-white px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto text-center">
+        
+        <!-- Section Header -->
+        <span class="inline-block bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
+            🌿 Achala Ecosystem Showcase
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">
+            Education & Health Tech Applications with Natural Healing Heritage Remedies
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-8">
+            Edopting AI in Education, HealthTech in nature's most powerful remedies for joint health, vitality, and immunity.
+        </p>
+
+        <!-- Slideshow Container -->
+        <div class="relative w-full max-w-2xl mx-auto bg-slate-900 rounded-2xl shadow-xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] flex items-center justify-center">
+            
+            <!-- Slide 1 -->
+            <div class="slideshow-slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/25.png" alt="Powerful Herb for Healing" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Human-Centered Innovation for Education</h3>
+                <p class="text-xs text-gray-600 mt-1">A new ERA of innovative institutional education systems</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/26.png" alt="Ayurvedic Preparation" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Intelligent classroom companion of modern educators</h3>
+                <p class="text-xs text-gray-600 mt-1">Real time engagement insights, zero prep integration and privacy focused design.</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/23.png" alt="Holistic Wellness" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Traditional Preparation & Dosha Balance</h3>
+                <p class="text-xs text-gray-600 mt-1">Nourishing the mind and body through pure, unadulterated elements.</p>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slideshow-slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/24.png" alt="Powerful Herb for Healing" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Sustainable Living & Organics most powerful herb for Natural Wellbeing</h3>
+                <p class="text-xs text-gray-600 mt-1">Destroys parasites, urinary infections, joint pain, and supports deep recovery.</p>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/27.png" alt="Ayurvedic Preparation" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Decode your diagnosis, Heal with Heritage</h3>
+                <p class="text-xs text-gray-600 mt-1">A revolutionary dual-engine AI platform built for everyone—bridging clinical accuracy with the time-tested wisdom of Ayurveda right from your kitchen.</p>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="slideshow-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center p-6 bg-white">
+                <img src="image/28.png" alt="Holistic Wellness" class="max-h-[70%] w-auto object-contain rounded-lg shadow-sm mb-4">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">Your Health Holistically, Powered by AI</h3>
+                <p class="text-xs text-gray-600 mt-1">Achala Digital Vaidya designed to empower the common man by dissolving medical complexity into clear actionable steps</p>
+            </div>
+
+            <!-- Navigation Controls (Previous / Next Buttons) -->
+            <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 rounded-full transition z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 rounded-full transition z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <!-- Slide Dots Indicator -->
+            <div class="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-10">
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(1)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(2)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(3)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(4)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(5)"></span>
+                <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer transition-all" onclick="currentSlide(6)"></span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+   <section id="education" class="w-full bg-orange-50/30 py-16 px-4 font-sans text-slate-900">
+  
+  <!-- Live Rollout Hero Pitch Banner -->
+  <div class="mb-12 w-full max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-amber-50 via-amber-100 to-amber-50 border border-amber-300 text-amber-900 shadow-sm transition hover:shadow-md">
+      <div class="flex items-center gap-2 bg-amber-600 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-inner">
+          <span class="flex h-2 w-2 rounded-full bg-white animate-ping"></span>
+          <span>Live Rollout</span>
+      </div>
+      <span class="text-xs md:text-sm font-medium text-center sm:text-left">
+          3-Day Free Institutional Pilot Program, Experience our Ed-Tech Solution with your teachers/students and identify opportunities for improvement
+      </span>
+      <a href="#contact" class="inline-flex items-center gap-1 text-xs md:text-sm font-bold text-amber-900 bg-amber-200/80 hover:bg-amber-300 px-3 py-1 rounded-lg transition shadow-xs whitespace-nowrap">
+          <span>Book a Free Pilot</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+          </svg>
+      </a>
+  </div>
+
+  <!-- Main Section Header Block -->
+  <div class="max-w-4xl mx-auto text-center mb-16 mt-10">
+      <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-orange-100/60 border border-orange-200 text-xs font-bold tracking-wide text-amber-900 mb-8 shadow-sm">
+          <span class="flex h-2 w-2 rounded-full bg-orange-500 animate-pulse"></span>
+          A New Era: Institutional Pilot Program
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 text-slate-900 leading-tight">
+          Human-Centered Innovation for <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+              Education, Health Tech & Ayurveda Wellness Products
+          </span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+          We combine 20+ years of product design and technology expertise with education and holistic wellness to create meaningful digital products, institutional solutions and human experiences.
+      </p>
+      
+      <!-- Fixed Clean CTA Button (Replaced nested button/link structure) -->
+      <div class="flex justify-center mb-16">
+          <a href="https://achala-phygital-hub.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full max-w-xl px-6 py-4 rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold text-base hover:opacity-95 transition-all shadow-xl hover:-translate-y-1 flex items-center justify-between gap-4 text-center">
+              <span>Build the next human-centered experience with ACHALA</span>
+              <span class="text-orange-400 font-extrabold text-xl">→</span>
+          </a>
+      </div>
+  </div>
+
+  <!-- Achala Education Feature Card Grid -->
+  <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 sm:p-10 shadow-lg border border-orange-100 flex flex-col sm:flex-row items-start justify-between gap-6 transition hover:shadow-xl">
+      <div class="space-y-3">
+          <span class="bg-orange-100 text-orange-900 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+              EdTech Module
+          </span>
+          <h3 class="text-2xl font-bold text-slate-900">Achala Education</h3>
+          <p class="text-slate-600 leading-relaxed text-sm md:text-base max-w-xl">
+              AI-driven cognitive scanners and gamified smartboard hubs designed to optimize classroom energy and working memory in real-time.
+          </p>
+      </div>
+      <div class="shrink-0 pt-2 sm:pt-6">
+          <a href="https://dineshav05.github.io/achala-value-education/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-700 font-bold text-sm transition-colors border border-orange-200 group">
+              <span>Explore the AI Digital Hub</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+      </div>
+  </div>
+
+</section>
+
+    <!-- Achala Digital Vaidya 3-Card Feature Section -->
+<section id="digital-vaidya" class="py-20 bg-gradient-to-b from-white via-slate-50 to-white px-4 sm:px-6 lg:px-8 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-sky-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-xs">
+                🩺 Official Launch: Achala Digital Vaidya
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                Comprehensive Clinical Care. <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-teal-600">Powered by AI.</span>
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
+                A revolutionary multi-engine AI platform built for everyone—bridging acute emergency triage, clinical diagnostics, and time-tested wisdom straight from your kitchen.
+            </p>
+        </div>
+
+        <!-- Main Wide Showcase Card -->
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200/90 overflow-hidden p-8 sm:p-12 relative">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Column: App Brand Identity & Badge (4 Cols) -->
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left bg-gradient-to-br from-slate-50 to-sky-50/50 p-8 rounded-2xl border border-sky-100">
+                    <div class="w-28 h-28 rounded-2xl shadow-lg overflow-hidden bg-white border-2 border-sky-500/30 flex items-center justify-center mb-6 p-2">
+                        <img src="image/Achala_Digital_Vaidya_logo.png" alt="Achala Digital Vaidya Logo" class="w-full h-full object-contain rounded-xl">
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900">Digital Vaidya</h3>
+                    <p class="text-xs text-sky-700 font-bold uppercase tracking-widest mt-1">Achala Enterprises</p>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Transforming complex dossiers, emergency scans, and lab reports into transparent, actionable health pathways.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-2 justify-center lg:justify-start">
+                        <span class="bg-slate-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow-sm">Smart Health AI</span>
+                        <span class="bg-sky-100 text-sky-800 text-[11px] font-bold px-3 py-1.5 rounded-lg">Multi-Language</span>
+                    </div>
+                </div>
+
+                <!-- Right Column: 3 Feature Cards & Action CTA (8 Cols) -->
+                <div class="lg:col-span-8 space-y-6">
+                    
+                    <div>
+                        <span class="text-xs font-bold text-sky-600 uppercase tracking-widest">Multi-Engine Clinical Suite</span>
+                        <h4 class="text-2xl font-extrabold text-slate-900 mt-1">
+                            Emergency Triage to Heritage Wellness
+                        </h4>
+                    </div>
+
+                    <!-- 3-Card Feature Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        
+                        <!-- Card 1: Acute Trauma Triage -->
+                        <div class="p-4 rounded-2xl bg-red-50/50 border border-red-200 hover:border-red-500 transition shadow-xs group flex flex-col justify-between">
+                            <div>
+                                <div class="text-red-600 font-bold text-sm mb-2 flex items-center gap-1.5">
+                                    <span class="p-1.5 rounded-lg bg-red-100 text-red-700">🚨</span> Trauma Triage
+                                </div>
+                                <h5 class="text-xs font-extrabold text-slate-900 mb-1">Emergency & Injury Assessment</h5>
+                                <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                    Immediate AI triage for sudden accidents, falls, sprains, or severe swelling.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Modern Clinical -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-sky-500 transition shadow-xs group flex flex-col justify-between">
+                            <div>
+                                <div class="text-sky-600 font-bold text-sm mb-2 flex items-center gap-1.5">
+                                    <span class="p-1.5 rounded-lg bg-sky-100 text-sky-700">🧬</span> Modern Clinical
+                                </div>
+                                <h5 class="text-xs font-extrabold text-slate-900 mb-1">Diagnostics & Scans</h5>
+                                <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                    Instant breakdowns of complex allopathic scans, blood panels, and MRIs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Kitchen Ayurveda -->
+                        <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 hover:border-amber-500 transition shadow-xs group flex flex-col justify-between">
+                            <div>
+                                <div class="text-amber-800 font-bold text-sm mb-2 flex items-center gap-1.5">
+                                    <span class="p-1.5 rounded-lg bg-amber-100 text-amber-800">🌿</span> Kitchen Ayurveda
+                                </div>
+                                <h5 class="text-xs font-extrabold text-slate-900 mb-1">Heritage Guidance</h5>
+                                <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                    Empowering natural guidance, dosha balancing, and traditional herbal remedies.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+                        <a href="https://achala-digital-vaidya.streamlit.app/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-sky-600 to-teal-600 text-white font-bold text-sm text-center hover:opacity-95 transition shadow-lg shadow-sky-600/30 flex items-center justify-center gap-2 group">
+                            <span>Access Digital Vaidya</span>
+                            <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                        <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>On-Device Privacy &bull; Zero-IT Setup</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- Organic Products & Heritage Living Banner Section -->
+<section id="organic-products" class="py-20 bg-green-50/30 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-bold uppercase tracking-wider mb-4">
+                🌱 IMC Ayurveda
+            </span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+                Pure Elements. <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-700">Sustained Well-Being.</span>
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Merging Ayurvedic science with modern organic living—bringing raw, unadulterated remedies and natural care straight from nature to your home.
+            </p>
+        </div>
+
+        <!-- Banner Card Layout -->
+        <div class="bg-white rounded-2xl shadow-xl border border-emerald-100 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+            
+            <!-- Left Side: Banner Image (Fully visible and responsive on mobile & desktop) -->
+            <div class="lg:col-span-6 bg-slate-900 flex flex-col justify-between p-4 sm:p-6 lg:p-8 relative">
+                <div class="w-full rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                    <!-- Updated to scale fluidly without cropping or hiding content -->
+                    <img src="image/IMC.png" alt="Powerful Herbal and Organic Remedies" class="w-full h-auto max-h-[350px] sm:max-h-[400px] object-contain rounded-lg">
+                </div>
+                <div class="mt-4">
+                    <span class="bg-emerald-600 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                        Featured Remedy
+                    </span>
+                    <h3 class="text-lg sm:text-xl font-bold mt-2 text-white">
+                        Nature’s Most Powerful Healing Herbs
+                    </h3>
+                </div>
+            </div>
+
+            <!-- Right Side: Content & External Store Link CTA -->
+            <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 space-y-6">
+                
+                <div class="space-y-3">
+                    <span class="text-xs text-emerald-800 font-semibold uppercase tracking-widest">IMC</span>
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        Targeted Relief & Natural Restoration
+                    </h3>
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Explore formulations curated to naturally support Diabetes, Wealth Management, Women Wellness, Joint mobility, combat chronic fatigue, address urinary tract wellness, and promote deep biological balance.
+                    </p>
+                </div>
+
+                <!-- Highlights List -->
+                <ul class="space-y-2 text-xs sm:text-sm text-gray-700 font-medium">
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-600">✔</span> 100% Raw, Wildcrafted & Unadulterated Ingredients
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-600">✔</span> Zero Artificial Additives or Chemical Preservatives
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-600">✔</span> Ethically Sourced & Laboratory Verified
+                    </li>
+                </ul>
+
+                <!-- Action Button Container (Placeholder linked to external store) -->
+                <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                    <a href="https://www.imcbusiness.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 text-white font-bold text-center hover:bg-emerald-700 transition shadow-md flex items-center justify-center gap-2 group">
+                        <span>View Storefront</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                    <span class="text-xs text-gray-500">
+                        📦 Secure Checkout &bull; Pan-India Delivery
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+        <div style="margin-top: 20px;"></div>
+      <!-- Integrated Secondary Module Card (Properly spaced below without overlap) -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-amber-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition hover:shadow-lg">
+            <div class="space-y-2 max-w-xl">
+                <span class="bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Achala Organics Module
+                </span>
+                <h4 class="text-xl font-bold text-slate-900">Achala Organics</h4>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Tech-Backed Wellness, Rooted in Ancient Ayurveda. Bringing the profound healing of Ayurvedic nutrition and cutting-edge lifestyle AI into your daily routine. Take a purposeful pause.
+                </p>
+            </div>
+            <div class="shrink-0 w-full md:w-auto">
+                <a href="https://dineshav05.github.io/achala-organics/" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-xs sm:text-sm transition-colors border border-amber-200 group">
+                    <span>Explore the Achala Organics Hub</span>
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    
+
+    <!-- Portfolio/Business Units Grid -->
+<!--<section class="max-w-7xl mx-auto px-4 pb-24 w-full font-sans">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        
+        <div class="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col h-full overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/0 to-indigo-50/0 group-hover:from-indigo-50/50 group-hover:to-transparent transition-colors duration-500 pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="bg-indigo-50 text-indigo-600 px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full">
+                        ED-TECH & AI
+                    </span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Achala Education</h3>
+                <p class="text-slate-500 leading-relaxed text-sm mb-8 flex-grow">AI-driven cognitive scanners and gamified smartboard hubs designed to optimize classroom energy and working memory in real-time.</p>
+                
+                <a href="https://dineshav05.github.io/achala-value-education/" target="_blank" class="group/btn text-indigo-600 font-bold text-sm flex items-center gap-2 mt-auto w-fit transition-colors hover:text-indigo-800">
+                    Explore the AI Digital Hub 
+                    <i class="fa-solid fa-arrow-right text-sm group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col h-full overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-transparent transition-colors duration-500 pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <span class="bg-blue-50 text-blue-600 px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full">
+                        UX/UI CONSULTANCY
+                    </span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Achala Digital Lab</h3>
+                <p class="text-slate-500 leading-relaxed text-sm mb-8 flex-grow">Enterprise-grade product design and user experience architecture, crafting seamless digital applications for global tech innovators.</p>
+                
+                <a href="https://www.stylemanntra.co.in/" target="_blank" class="group/btn text-blue-600 font-bold text-sm flex items-center gap-2 mt-auto w-fit transition-colors hover:text-blue-800">
+                    View Design Portfolio 
+                    <i class="fa-solid fa-arrow-right text-sm group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col h-full overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/50 group-hover:to-transparent transition-colors duration-500 pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="bg-emerald-50 text-emerald-600 px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full">
+                        HEALTH-TECH & WELLNESS
+                    </span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Achala Wellbeing</h3>
+                <p class="text-slate-500 leading-relaxed text-sm mb-8 flex-grow">Merging Ayurvedic science with modern technology—from restorative nutrition to AI-powered diagnostics for holistic well-being.</p>
+                
+                <a href="https://dineshav05.github.io/achala-organics/" target="_blank" class="group/btn text-emerald-600 font-bold text-sm flex items-center gap-2 mt-auto w-fit transition-colors hover:text-emerald-800">
+                    Explore Holistic Products 
+                    <i class="fa-solid fa-arrow-right text-sm group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col h-full overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-amber-50/0 group-hover:from-amber-50/50 group-hover:to-transparent transition-colors duration-500 pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-amber-50 text-amber-500 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                    <span class="bg-amber-50 text-amber-600 px-3 py-1 text-[10px] uppercase tracking-widest font-bold rounded-full">
+                        LEADERSHIP
+                    </span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Dinesha Vishwanatha</h3>
+                <p class="text-slate-500 leading-relaxed text-sm mb-8 flex-grow">UX/UI Architect with 20+ years shaping digital experiences, bridging the gap between ancient wellness paradigms and next-gen IT solutions.</p>
+                
+                <a href="https://www.dineshavishwanatha.com/" target="_blank" class="group/btn text-amber-600 font-bold text-sm flex items-center gap-2 mt-auto w-fit transition-colors hover:text-amber-800">
+                    View Professional Profile 
+                    <i class="fa-solid fa-arrow-right text-sm group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section> -->
+
+
+    
+<!-- Brahmi protocol and biomechanical vision recovery -->
+    <section class="w-full bg-slate-50/50 py-20 px-4 font-sans text-slate-900 border-t border-slate-100">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 mt-4">
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-100/60 border border-emerald-200 text-xs font-bold tracking-wide text-emerald-900 mb-6 shadow-sm">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        PIPELINE PROJECTS
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-indigo-100/60 border border-indigo-200 text-xs font-bold tracking-wide text-indigo-900 mb-6 shadow-sm">
+        <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+        Clinical Success Digitized
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6 text-slate-900">
+        The 90-Day <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Neurological Reset</span>
+      </h2>
+      
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+        We transformed real-world Ayurvedic recoveries into a trackable digital protocol. Monitor your daily botanical intake, log cognitive fatigue, and actively rebuild optic pathways.
+      </p>
+    </div>
+
+    <!-- Real-World Use Cases Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      
+      <!-- Story 1: The Architect -->
+      <div class="group bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">
+          👓
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-slate-800">The Architect's Protocol</h3>
+        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+          Overcoming 15 years of severe ciliary muscle spasm and lens dependency through strict dietary shifts and biomechanical eye exercises, proving visual degradation is a reversible adaptation.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 bg-slate-50 text-slate-600 border border-slate-100 rounded-lg text-xs font-bold shadow-inner">Biomechanical Tracking</span>
+          <span class="px-3 py-1.5 bg-slate-50 text-slate-600 border border-slate-100 rounded-lg text-xs font-bold shadow-inner">Dietary Logs</span>
+        </div>
+      </div>
+
+      <!-- Story 2: The Optic Reset -->
+      <div class="group bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">
+          🌿
+        </div>
+        <h3 class="text-2xl font-bold mb-3 text-slate-800">Restoring Optic Integrity</h3>
+        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+          Bypassing surgical intervention for sudden vision loss using a strict 90-day regimen of Brahmi Leaves Kashayam and Brahmi Ghritam to repair central nervous system microcirculation.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 bg-slate-50 text-slate-600 border border-slate-100 rounded-lg text-xs font-bold shadow-inner">Botanical Dosages</span>
+          <span class="px-3 py-1.5 bg-slate-50 text-slate-600 border border-slate-100 rounded-lg text-xs font-bold shadow-inner">Progress Grid</span>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <button onclick="alert('Launching Soon!')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-8 rounded-xl shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+        Launch the 90-Day Tracker <span class="text-xl leading-none">→</span>
+      </button>
+    </div>
+
+  </div>
 </section>
 
     <!-- Contact Section -->
@@ -133,10 +882,10 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Whether you are a school looking to upgrade your curriculum, a brand in need of UI/UX product design, or seeking holistic wellness consulting, we are ready to collaborate.
-                </p>
+                    Make Ed-Tech the spearhead. Make UX/Digital the enabling engine. Make Wellness/Health-Tech the second innovation frontier. 
+                </p>   
             </div>
-
+        
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-brand-50 rounded-3xl overflow-hidden shadow-sm border border-gray-100">
                 
                 <!-- Contact Information Panel -->
@@ -164,7 +913,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-brand-50">Phone</h4>
-                                    <p class="text-gray-300 text-sm mt-1">+91 91132 75199</p>
+                                    <p class="text-gray-300 text-sm mt-1">+91 7676206966</p>
                                 </div>
                             </div>
 
@@ -184,7 +933,7 @@
                     <div class="mt-12 pt-8 border-t border-white/20">
                         <p class="text-sm text-gray-400">Led by</p>
                         <p class="text-lg font-semibold text-white">Dinesha Vishwanatha</p>
-                        <p class="text-sm text-brand-600">Founder, Author & Director</p>
+                        <p class="text-sm text-brand-600">Founder & Ecosystem Architect</p>
                     </div>
                 </div>
 
@@ -213,10 +962,9 @@
                             <label for="inquiryType" class="block text-sm font-medium text-gray-700 mb-2">Subject of Inquiry</label>
                             <select id="inquiryType" name="inquiryType" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition-colors bg-white text-gray-700">
                                 <option value="" disabled selected>Select a division...</option>
-                                <option value="Achala Organics">Functional Wellness</option>
-                                <option value="Achala Value Education (Bulk Books/Hub)">Achala Value Education (Phygital Curriculum)</option>
-                                <option value="Stylemanntra Digital (UI/UX)">Stylemanntra Digital (UI/UX Consultancy)</option>
-                                <option value="SilkStone">SilkStone Ayurvedic & Nutrition Consultation</option>
+                                <option value="Achala Value Education (Bulk Books/Hub)">Achala Value Education(EdTech Suite + Phygital Curriculum)</option>
+                                <option value="Achala Digital (UI/UX)">Achala Digital Vaidya & Health Tech</option>
+                                <option value="IMC">IMC Ayurveda Products</option>
                                 <option value="General Business Inquiry">General Business Inquiry</option>
                             </select>
                         </div>
