@@ -39,6 +39,12 @@
             animation-duration: 25s; /* Slightly faster on mobile for better flow */
           }
         }
+
+        .site-logo {
+          max-width: 100%;  /* Prevents the logo from overflowing small screens */
+          height: auto;     /* Maintains the proper aspect ratio automatically */
+          display: block;   /* Eliminates any strange bottom gaps/margins */
+        }
     </style>
 
     <script>
@@ -154,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Brand Logo & Name -->
         <a href="#" class="flex items-center gap-3 group">
             <div class="w-10 h-10 flex items-center justify-center text-white font-black shadow-md group-hover:scale-105 transition-transform">
-               <img src="image/Achala_HLogo2.png" alt="Achala Enterprises" width="auto" height="inherit" loading="eager"  />
+               <img src="image/Achala_HLogo2.png" alt="Achala Enterprises" width="300" height="80" loading="eager" class="site-logo"  />
             </div>      
         </a>
 
